@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Поздравляю вас с годовщиной свадьбы!</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="shortcut icon" href="favicon.jpg" type="image/jpg" />
+		<style>
+			body,
+			html {
+				font-family: 'Open Sans', sans-serif;
+				transition: all 0.3s ease-in-out;
+				padding: 0 5px;
+				overflow-x: hidden;
+			}
+			.container-header {
+				font-size: 3rem;
+				font-weight: bold;
+				color: #fff;
+				background: linear-gradient(45deg, #ff6b6b, #f7d07a);
+				background-size: 200% 200%;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				animation: shimmer 2s infinite;
+				font-family: 'Lobster', sans-serif;
+			}
+			@keyframes shimmer {
+				0% {
+					background-position: 100% 0;
+				}
+				100% {
+					background-position: -100% 0;
+				}
+			}
+			.btn {
+				display: inline-block;
+				padding: 15px 30px;
+				font-size: 16px;
+				font-weight: bold;
+				color: #fff;
+				text-align: center;
+				text-decoration: none;
+				border-radius: 8px;
+				background: linear-gradient(45deg, #ff6b6b, #f7d07a);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+			}
+			.btn:hover {
+				background: linear-gradient(45deg, #ff6b6b, #f7d07a);
+				transform: scale(1.05);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+			}
+			.btn:active {
+				background: linear-gradient(45deg, #f7d07a, #ff6b6b);
+				transform: scale(0.95);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			}
+			.content {
+				visibility: hidden;
+				opacity: 0;
+				transform: translateX(0);
+				transition: visibility 0s, opacity 0.3s ease-in-out,
+					transform 0.3s ease-in-out;
+			}
+			.content.left {
+				transform: translateX(-100px);
+			}
+			.content.right {
+				transform: translateX(100px);
+			}
+			.content.visible {
+				visibility: visible;
+				opacity: 1;
+				transform: translateX(0);
+			}
+			.content.right img,
+			.content.left img {
+				max-width: 500px;
+			}
+			.photos {
+				display: flex;
+				justify-content: space-between;
+			}
+			@media (max-width: 1040px) {
+				.photos {
+					flex-direction: column;
+					gap: 20px;
+				}
+			}
+			@media (max-width: 540px) {
+				.container-header {
+					font-size: 29px;
+				}
+				.content.right img,
+				.content.left img {
+					max-width: 370px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="container-first">
+				<h1 class="container-header">Поздравляю с годовщиной свадьбы!</h1>
+				<a href="#" class="btn">Открыть</a>
+			</div>
+			<div class="content left">
+				<p>
+					Дорогие родители! От всей души поздравляю вас с этим знаменательным
+					событием! Я бесконечно благодарен все, что вы сделали для меня. Ваш
+					брак — это яркий пример истинной любви и преданности, и я искренне
+					желаю, чтобы он оставаясь таким же крепким и незыблемым. Поздравляю!
+				</p>
+			</div>
+			<div class="photos">
+				<div class="content right">
+					<img src="icon.jpg" alt="фото" />
+				</div>
+				<div class="content left">
+					<img src="icon1.jpg" alt="фото" />
+				</div>
+			</div>
+		</div>
+		<script>
+			document.querySelector('.btn').addEventListener('click', () => {
+				document.querySelector('.btn').style.display = 'none'
+				document.querySelectorAll('.content.left').forEach((element, index) => {
+					setTimeout(() => {
+						element.classList.add('visible')
+					}, index * 300)
+				})
+				document
+					.querySelectorAll('.content.right')
+					.forEach((element, index) => {
+						setTimeout(() => {
+							element.classList.add('visible')
+						}, index * 300 + 300)
+					})
+			})
+		</script>
+	</body>
+</html>
